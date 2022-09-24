@@ -1,5 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperSitecamere</title>
+</head>
+
 <body>
-    <div class="container">
+    <script type="module" src="textjs.js"></script>
+    <div class="enter">
         <label for="name">Nom</label>
         <input type="text" id="lastname" placeholder="...">
 
@@ -7,6 +17,14 @@
             <option value="wait">En Attente</option>
             <option value="yes">Negatif</option>
             <option value="no">Positif</option>
-          </select>
+        </select>
+        <button id="savebtn">Save</button>
+    </div>
+    <div class="output">
+        <textarea name="output" id="output" cols="30" rows="10"></textarea>
+        <button id="showbtn">Show info</button>
     </div>
 </body>
+
+
+</html>
