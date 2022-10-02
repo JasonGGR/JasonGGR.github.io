@@ -83,7 +83,7 @@ function connection_test()
 {
   var pwrd = password.value;
   var promesseReponse = fetch(
-    "http://152.228.171.180:8080/c",
+    "https://mpsi1.fr/jason:8080/c",
     {
         method: "POST",
         body: pwrd,
@@ -234,7 +234,7 @@ function updateData(id,addvalue)
   console.log(datas);
 
   var promesseReponse = fetch(
-    "http://152.228.171.180:8080/u",
+    "https://mpsi1.fr/jason:8080/u",
     {
         method: "POST",
         body: datas,
@@ -263,7 +263,7 @@ function updateData(id,addvalue)
 
 function getData()
 {
-  fetch("http://152.228.171.180:8080/g",
+  fetch("https://mpsi1.fr/jason:8080/g",
   {
     method: "GET",
     headers: {
@@ -284,7 +284,7 @@ function getData()
 function sendData(datas)
 {
   var promesseReponse = fetch(
-    "http://152.228.171.180:8080/w",
+    "https://mpsi1.fr/jason:8080/w",
     {
         method: "POST",
         body: datas,
