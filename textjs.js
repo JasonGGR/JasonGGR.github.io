@@ -43,13 +43,13 @@ createbutton.addEventListener("click", function(event)
     statedis.id ="state" + (indx-1);
     let waitopt = document.createElement("option");
     waitopt.text = "En Attente";
-    waitopt.value = "wait";
+    waitopt.value = "*wait";
     let yesopt = document.createElement("option");
     yesopt.text = "Positive";
-    yesopt.value = "yes";
+    yesopt.value = "*yes";
     let noopt = document.createElement("option");
     noopt.text = "Negative";
-    noopt.value = "no";
+    noopt.value = "*no";
     statedis.add(waitopt);
     statedis.add(yesopt);
     statedis.add(noopt);
@@ -61,7 +61,20 @@ createbutton.addEventListener("click", function(event)
     itw2dis.placeholder = "Interviewer 2"
     let datedis = document.createElement("input");
     datedis.id = "date" + (indx-1);
-    datedis.placeholder = "Date"
+    datedis.placeholder = "Date and hour";
+    let placedis = document.createElement("input");
+    placedis.id = "place" + (indx-1);
+    placedis.placeholder = "Place";
+    let relaundis = document.createElement("select");
+    relaundis.id ="relaun" + (indx-1);
+    let yopt = document.createElement("option");
+    yopt.text = "Oui";
+    yopt.value = "y";
+    let nopt = document.createElement("option");
+    nopt.text = "Non";
+    nopt.value = "n";
+    relaundis.add(nopt);
+    relaundis.add(yopt);
     idbtn.value = "Add";
     div.appendChild(idbtn);
     div.appendChild(namedis);
@@ -73,6 +86,8 @@ createbutton.addEventListener("click", function(event)
     div.appendChild(itw1dis);
     div.appendChild(itw2dis);
     div.appendChild(datedis);
+    div.appendChild(placedis);
+    div.appendChild(relaundis);
     olist.appendChild(div);
     outputdiv.replaceChild(olist, outputlist);
     outputlist = olist;
@@ -133,8 +148,66 @@ searchinput.addEventListener("input", function(event)
 function displayData(datali)
 {
   var olist = document.createElement("ul");
-  for (let i = 0; i < datali.length; i++) {
-    let strlist = datali[i].split("¤")
+  var list = [];
+  var div = document.createElement("div");
+  let nametxt = document.createElement("h1");
+  nametxt.value = "Name"
+  let fnametxt = document.createElement("h1");
+  fnametxt.value = "Firstname";
+  let emailtxt = document.createElement("h1");
+  emailtxt.value = "Email";
+  let numtxt = document.createElement("h1");
+  numtxt.value = "Num";
+  let domtxt = document.createElement("h1");
+  domtxt.value = "Domain";
+  let anstxt = document.createElement("h1");
+  anstxt.value = "Answer";
+  let itw1txt = document.createElement("h1");
+  itw1txt.value = "Interviewer 1";
+  let itw2txt = document.createElement("h1");
+  itw2txt.value = "Interviewer 2";
+  let datetxt = document.createElement("h1");
+  datetxt.value = "Date and hour";
+  let placetxt = document.createElement("h1");
+  placetxt.value = "Place";
+  let relauntxt = document.createElement("h1");
+  relauntxt.value = "Relaunch";
+  div.appendChild(nametxt);
+  div.appendChild(fnametxt);
+  div.appendChild(emailtxt);
+  div.appendChild(numtxt);
+  div.appendChild(domtxt);
+  div.appendChild(anstxt);
+  div.appendChild(itw1txt);
+  div.appendChild(itw2txt);
+  div.appendChild(datetxt);
+  div.appendChild(placetxt);
+  div.appendChild(relauntxt);
+  olist.appendChild(div);
+  for(let i = 0; i < datali.length; i++)
+  {
+    if(datali[i].includes("*yes"))
+    {
+      list.push(datali[i]);
+    }
+  }
+  for(let i = 0; i < datali.length; i++)
+  {
+    if(datali[i].includes("*wait"))
+    {
+      list.push(datali[i]);
+    }
+  }
+  for(let i = 0; i < datali.length; i++)
+  {
+    if(datali[i].includes("*no"))
+    {
+      list.push(datali[i]);
+    }
+  }
+  
+  for (let i = 0; i < list.length; i++) {
+    let strlist = list[i].split("¤")
     let div = document.createElement("div");
     let idbtn = document.createElement("input");
     idbtn.type ="button";
@@ -158,13 +231,13 @@ function displayData(datali)
     statedis.id ="state" + strlist[0];
     let waitopt = document.createElement("option");
     waitopt.text = "En Attente";
-    waitopt.value = "wait";
+    waitopt.value = "*wait";
     let yesopt = document.createElement("option");
     yesopt.text = "Positive";
-    yesopt.value = "yes";
+    yesopt.value = "*yes";
     let noopt = document.createElement("option");
     noopt.text = "Negative";
-    noopt.value = "no";
+    noopt.value = "*no";
     statedis.add(waitopt);
     statedis.add(yesopt);
     statedis.add(noopt);
@@ -176,7 +249,20 @@ function displayData(datali)
     itw2dis.placeholder = "Interviewer 2"
     let datedis = document.createElement("input");
     datedis.id = "date" + strlist[0];
-    datedis.placeholder = "Date"
+    datedis.placeholder = "Date and hour"
+    let placedis = document.createElement("input");
+    placedis.id = "place" + strlist[0];
+    placedis.placeholder = "Place";
+    let relaundis = document.createElement("select");
+    relaundis.id ="relaun" + strlist[0];
+    let yopt = document.createElement("option");
+    yopt.text = "Oui";
+    yopt.value = "y";
+    let nopt = document.createElement("option");
+    nopt.text = "Non";
+    nopt.value = "n";
+    relaundis.add(nopt);
+    relaundis.add(yopt);
     idbtn.value = "Update";
     namedis.value = strlist[1];
     fnamedis.value = strlist[2];
@@ -187,6 +273,8 @@ function displayData(datali)
     itw2dis.value = strlist[7];
     datedis.value = strlist[8];
     statedis.value = strlist[9];
+    placedis.value = strlist[10];
+    relaundis.value = strlist[11];
     div.appendChild(idbtn);
     div.appendChild(namedis);
     div.appendChild(fnamedis);
@@ -197,6 +285,8 @@ function displayData(datali)
     div.appendChild(itw1dis);
     div.appendChild(itw2dis);
     div.appendChild(datedis);
+    div.appendChild(placedis);
+    div.appendChild(relaundis);
     olist.appendChild(div);
   }
   outputdiv.replaceChild(olist, outputlist);
@@ -206,6 +296,12 @@ function displayData(datali)
 function getIndex(datalist)
 {
   indx = datalist.length;
+}
+
+function showcate(list)
+{
+  
+  return list;
 }
 
 function updateData(id,addvalue)
@@ -223,7 +319,9 @@ function updateData(id,addvalue)
       var itw2id = document.getElementById("itw2"+id.toString());
       var dateid = document.getElementById("date"+id.toString());
       var stateid = document.getElementById("state"+id.toString());
-      datas += i.toString() + "¤" + nameid.value + "¤" + fnameid.value + "¤" + mailid.value + "¤" + numid.value + "¤" + domid.value + "¤" + itw1id.value + "¤" + itw2id.value + "¤" + dateid.value + "¤" + stateid.value + "\n";
+      var placeid = document.getElementById("place"+id.toString());
+      var relaunid = document.getElementById("relaun"+id.toString());
+      datas += i.toString() + "¤" + nameid.value + "¤" + fnameid.value + "¤" + mailid.value + "¤" + numid.value + "¤" + domid.value + "¤" + itw1id.value + "¤" + itw2id.value + "¤" + dateid.value + "¤" + stateid.value +"¤" +placeid.value + "¤"+ relaunid.value + "\n";
     }
     else{
       datas += datalst[i] + "\n"; 
@@ -231,7 +329,6 @@ function updateData(id,addvalue)
     
   }
   datas += (parseInt(datalst[datalst.length -1]) + addvalue).toString();
-  console.log(datas);
 
   var promesseReponse = fetch(
     "https://mpsi1.fr/jason/u",
@@ -278,35 +375,5 @@ function getData()
     datalst = data.split("\n");
     getIndex(datalst);
     return datalst;
-  });
-}
-
-function sendData(datas)
-{
-  var promesseReponse = fetch(
-    "https://mpsi1.fr/jason/w",
-    {
-        method: "POST",
-        body: datas,
-        headers: {
-            MonEnteteRequete: "bonjour serveur",
-        },
-    },
-);
-  promesseReponse.then(function(reponse) {
-      var promesseCorps = reponse.text();
-
-      promesseCorps.then(function(corps) {
-          console.log('Corps :', corps);
-      });
-
-      promesseCorps.catch(function(erreur) {
-          console.log('Erreur :', erreur);
-      });
-      getData();
-  });
-
-  promesseReponse.catch(function(erreur) {
-      console.log('Erreur :', erreur);
   });
 }
