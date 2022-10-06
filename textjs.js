@@ -61,7 +61,7 @@ createbutton.addEventListener("click", function(event)
     itw2dis.placeholder = "Interviewer 2"
     let datedis = document.createElement("input");
     datedis.id = "date" + (indx-1);
-    datedis.placeholder = "Date and hour";
+    datedis.type ="datetime-local";
     let placedis = document.createElement("input");
     placedis.id = "place" + (indx-1);
     placedis.placeholder = "Place";
@@ -134,7 +134,13 @@ searchinput.addEventListener("input", function(event)
   if(connected == 1)
   {
     var searchstr = searchinput.value;
-    var searchlst =[];
+    sortData(searchstr);
+  }
+})
+
+function sortData(searchstr)
+{
+  var searchlst =[];
     for (let i = 0; i < datalst.length - 1; i++) {
       if(datalst[i].toLowerCase().includes(searchstr.toLowerCase()))
         {
@@ -142,36 +148,51 @@ searchinput.addEventListener("input", function(event)
         }
     }
     displayData(searchlst);
-  }
-})
+}
 
 function displayData(datali)
 {
   var olist = document.createElement("ul");
   var list = [];
   var div = document.createElement("div");
-  let nametxt = document.createElement("h1");
+  div.className ="distext";
+  let uptxt = document.createElement("input");
+  uptxt.type ="button"
+  uptxt.value = "Update"
+  let nametxt = document.createElement("input");
+  nametxt.type ="button";
   nametxt.value = "Name"
-  let fnametxt = document.createElement("h1");
+  let fnametxt = document.createElement("input");
+  fnametxt.type ="button";
   fnametxt.value = "Firstname";
-  let emailtxt = document.createElement("h1");
+  let emailtxt = document.createElement("input");
+  emailtxt.type ="button";
   emailtxt.value = "Email";
-  let numtxt = document.createElement("h1");
+  let numtxt = document.createElement("input");
+  numtxt.type ="button";
   numtxt.value = "Num";
-  let domtxt = document.createElement("h1");
+  let domtxt = document.createElement("input");
+  domtxt.type ="button";
   domtxt.value = "Domain";
-  let anstxt = document.createElement("h1");
+  let anstxt = document.createElement("input");
+  anstxt.type ="button";
   anstxt.value = "Answer";
-  let itw1txt = document.createElement("h1");
+  let itw1txt = document.createElement("input");
+  itw1txt.type ="button";
   itw1txt.value = "Interviewer 1";
-  let itw2txt = document.createElement("h1");
+  let itw2txt = document.createElement("input");
+  itw2txt.type ="button";
   itw2txt.value = "Interviewer 2";
-  let datetxt = document.createElement("h1");
+  let datetxt = document.createElement("input");
+  datetxt.type ="button";
   datetxt.value = "Date and hour";
-  let placetxt = document.createElement("h1");
+  let placetxt = document.createElement("input");
+  placetxt.type ="button";
   placetxt.value = "Place";
-  let relauntxt = document.createElement("h1");
+  let relauntxt = document.createElement("input");
+  relauntxt.type ="button";
   relauntxt.value = "Relaunch";
+  div.appendChild(uptxt);
   div.appendChild(nametxt);
   div.appendChild(fnametxt);
   div.appendChild(emailtxt);
@@ -209,23 +230,28 @@ function displayData(datali)
   for (let i = 0; i < list.length; i++) {
     let strlist = list[i].split("¤")
     let div = document.createElement("div");
+    div.className="itemclass"
     let idbtn = document.createElement("input");
     idbtn.type ="button";
     idbtn.onclick = function(){updateData(strlist[0],0)};
     let namedis = document.createElement("input");
     namedis.id = "name" + strlist[0];
+    namedis.className ="dis";
     namedis.placeholder = "Name"
     let fnamedis = document.createElement("input");
     fnamedis.id = "fname" + strlist[0];
+    fnamedis.className="dis"
     fnamedis.placeholder = "Firstname"
     let maildis = document.createElement("input");
     maildis.id = "mail" + strlist[0];
     maildis.placeholder = "Email"
     let numdis = document.createElement("input");
     numdis.id = "num" + strlist[0];
+    numdis.className ="dis";
     numdis.placeholder = "Num"
     let domdis = document.createElement("input");
     domdis.id = "dom" + strlist[0];
+    domdis.className ="dis";
     domdis.placeholder = "Domain"
     let statedis = document.createElement("select");
     statedis.id ="state" + strlist[0];
@@ -243,15 +269,18 @@ function displayData(datali)
     statedis.add(noopt);
     let itw1dis = document.createElement("input");
     itw1dis.id = "itw1" + strlist[0];
+    itw1dis.className ="dis";
     itw1dis.placeholder = "Interviewer 1"
     let itw2dis = document.createElement("input");
     itw2dis.id = "itw2" + strlist[0];
+    itw2dis.className ="dis";
     itw2dis.placeholder = "Interviewer 2"
     let datedis = document.createElement("input");
     datedis.id = "date" + strlist[0];
-    datedis.placeholder = "Date and hour"
+    datedis.type ="datetime-local";
     let placedis = document.createElement("input");
     placedis.id = "place" + strlist[0];
+    placedis.className ="dis";
     placedis.placeholder = "Place";
     let relaundis = document.createElement("select");
     relaundis.id ="relaun" + strlist[0];
@@ -374,6 +403,7 @@ function getData()
   {
     datalst = data.split("\n");
     getIndex(datalst);
+    sortData("");
     return datalst;
   });
 }
