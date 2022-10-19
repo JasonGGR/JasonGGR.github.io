@@ -59,6 +59,9 @@ createbutton.addEventListener("click", function(event)
     let itw2dis = document.createElement("input");
     itw2dis.id = "itw2" + (indx-1);
     itw2dis.placeholder = "Interviewer 2"
+    let itw3dis = document.createElement("input");
+    itw3dis.id = "itw3" + (indx-1);
+    itw3dis.placeholder = "Interviewer 3"
     let datedis = document.createElement("input");
     datedis.id = "date" + (indx-1);
     datedis.type ="datetime-local";
@@ -85,6 +88,7 @@ createbutton.addEventListener("click", function(event)
     div.appendChild(statedis);
     div.appendChild(itw1dis);
     div.appendChild(itw2dis);
+    div.appendChild(itw3dis);
     div.appendChild(datedis);
     div.appendChild(placedis);
     div.appendChild(relaundis);
@@ -183,6 +187,9 @@ function displayData(datali)
   let itw2txt = document.createElement("input");
   itw2txt.type ="button";
   itw2txt.value = "Interviewer 2";
+  let itw3txt = document.createElement("input");
+  itw3txt.type ="button";
+  itw3txt.value = "Interviewer 3";
   let datetxt = document.createElement("input");
   datetxt.type ="button";
   datetxt.value = "Date and hour";
@@ -201,6 +208,7 @@ function displayData(datali)
   div.appendChild(anstxt);
   div.appendChild(itw1txt);
   div.appendChild(itw2txt);
+  div.appendChild(itw3txt);
   div.appendChild(datetxt);
   div.appendChild(placetxt);
   div.appendChild(relauntxt);
@@ -275,6 +283,10 @@ function displayData(datali)
     itw2dis.id = "itw2" + strlist[0];
     itw2dis.className ="dis";
     itw2dis.placeholder = "Interviewer 2"
+    let itw3dis = document.createElement("input");
+    itw3dis.id = "itw3" + strlist[0];
+    itw3dis.className ="dis";
+    itw3dis.placeholder = "Interviewer 3"
     let datedis = document.createElement("input");
     datedis.id = "date" + strlist[0];
     datedis.type ="datetime-local";
@@ -304,6 +316,7 @@ function displayData(datali)
     statedis.value = strlist[9];
     placedis.value = strlist[10];
     relaundis.value = strlist[11];
+    itw3dis.value = strlist[12];
     div.appendChild(idbtn);
     div.appendChild(namedis);
     div.appendChild(fnamedis);
@@ -313,6 +326,7 @@ function displayData(datali)
     div.appendChild(statedis);
     div.appendChild(itw1dis);
     div.appendChild(itw2dis);
+    div.appendChild(itw3dis);
     div.appendChild(datedis);
     div.appendChild(placedis);
     div.appendChild(relaundis);
@@ -346,11 +360,12 @@ function updateData(id,addvalue)
       var domid = document.getElementById("dom"+id.toString());
       var itw1id = document.getElementById("itw1"+id.toString());
       var itw2id = document.getElementById("itw2"+id.toString());
+      var itw3id = document.getElementById("itw3"+id.toString());
       var dateid = document.getElementById("date"+id.toString());
       var stateid = document.getElementById("state"+id.toString());
       var placeid = document.getElementById("place"+id.toString());
       var relaunid = document.getElementById("relaun"+id.toString());
-      datas += i.toString() + "¤" + nameid.value + "¤" + fnameid.value + "¤" + mailid.value + "¤" + numid.value + "¤" + domid.value + "¤" + itw1id.value + "¤" + itw2id.value + "¤" + dateid.value + "¤" + stateid.value +"¤" +placeid.value + "¤"+ relaunid.value + "\n";
+      datas += i.toString() + "¤" + nameid.value + "¤" + fnameid.value + "¤" + mailid.value + "¤" + numid.value + "¤" + domid.value + "¤" + itw1id.value + "¤" + itw2id.value + "¤" + dateid.value + "¤" + stateid.value +"¤" +placeid.value + "¤"+ relaunid.value + "¤"+ itw3id.value + "\n";
     }
     else{
       datas += datalst[i] + "\n"; 
