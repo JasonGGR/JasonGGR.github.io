@@ -102,7 +102,7 @@ function connection_test()
 {
   var pwrd = password.value;
   var promesseReponse = fetch(
-    "http://34.163.81.24/home/jasonromaingg/c",
+    "http://34.163.81.24/jasonromaingg/c",
     {
         method: "POST",
         body: pwrd,
@@ -375,7 +375,7 @@ function updateData(id,addvalue)
   datas += (parseInt(datalst[datalst.length -1]) + addvalue).toString();
 
   var promesseReponse = fetch(
-    "http://34.163.81.24/home/jasonromaingg/u",
+    "http://34.163.81.24/jasonromaingg/u",
     {
         method: "POST",
         body: datas,
@@ -404,7 +404,7 @@ function updateData(id,addvalue)
 
 function getData()
 {
-  fetch("http://34.163.81.24/home/jasonromaingg/g",
+  fetch("http://34.163.81.24/jasonromaingg/g",
   {
     method: "GET",
     headers: {
